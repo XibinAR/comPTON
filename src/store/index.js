@@ -9,4 +9,42 @@ export default new Vuex.Store({
     error:false,
     loaded:false,
     symbol:'AAPL',
-    stocklab
+    stocklabels:[],
+    technicallabels:[],
+    percent:0.0,
+    percentchange:0.0,
+    open:{
+      status:0,
+      data:[]
+    },
+    close:{
+      status:0,
+      data:[]
+    },
+    high:{
+      status:0,
+      data:[]
+    },
+    low:{
+      status:0,
+      data:[]
+    },
+    volume:{
+      status:0,
+      data:[]
+    },
+    ema:{
+      status:0,
+      data:[]
+    },
+    sma:{
+      status:0,
+      data:[]
+    }
+  },
+  getters:{
+    quoteTable(state){
+      let data = []
+      let counter = 0
+      state.stocklabels.forEach(element => {
+        let obj = {datetime:element,
