@@ -47,4 +47,25 @@ export default new Vuex.Store({
       let data = []
       let counter = 0
       state.stocklabels.forEach(element => {
-        let obj = {datetime:element,
+        let obj = {datetime:element,open:state.open.data[counter],high:state.high.data[counter],low:state.low.data[counter],close:state.close.data[counter]}
+        data.push(obj)
+        counter++
+      })
+      return data
+    },
+    volumeTable(state){
+      let data = []
+      let counter = 0
+      state.stocklabels.forEach(element => {
+        let obj = {datetime:element,volume:state.volume.data[counter]}
+        data.push(obj)
+        counter++
+      })
+      return data
+    }
+  },
+  mutations: {
+    setQuotes(state,quotes){
+      state.open.status = quotes.open
+      state.high.status = quotes.high
+      state.low.status = qu
