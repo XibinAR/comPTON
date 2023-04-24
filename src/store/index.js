@@ -102,4 +102,19 @@ export default new Vuex.Store({
         let quotes = {
             open:res.data["Global Quote"]["02. open"],
             high:res.data["Global Quote"]["03. high"], 
-            low:res.data["Globa
+            low:res.data["Global Quote"]["04. low"], 
+            close:res.data["Global Quote"]["08. previous close"],
+            volume:res.data["Global Quote"]["06. volume"],
+            percent:res.data["Global Quote"]["09. change"],
+            percentchange:res.data["Global Quote"]["10. change percent"]       
+        }
+        commit('setQuotes',quotes)
+    },
+    async setSeries({commit},symbol){
+        let res = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=${process.env.KEY}`)
+        let labels = []
+        let open = []
+        let close = []
+        let high = []
+        let low = []
+        let volume = []
