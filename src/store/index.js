@@ -68,4 +68,21 @@ export default new Vuex.Store({
     setQuotes(state,quotes){
       state.open.status = quotes.open
       state.high.status = quotes.high
-      state.low.status = qu
+      state.low.status = quotes.low
+      state.close.status = quotes.close
+      state.volume.status = quotes.volume
+      state.percent = quotes.percent
+      state.percentchange = quotes.percentchange
+    },
+    setSeries(state,datasets){
+      state.stocklabels = datasets.labels
+      state.open.data = datasets.open
+      state.close.data = datasets.close
+      state.high.data = datasets.high
+      state.low.data = datasets.low
+      state.volume.data = datasets.volume
+    },
+    setTechnical(state,datasets){
+      state.technicallabels = datasets.labels
+      state.ema.data = datasets.ema
+      state.ema.status
