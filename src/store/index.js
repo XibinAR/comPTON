@@ -118,3 +118,12 @@ export default new Vuex.Store({
         let high = []
         let low = []
         let volume = []
+        for(let key in res.data["Time Series (5min)"]){
+            labels.push(key)
+            open.push(res.data["Time Series (5min)"][key]["1. open"])
+            close.push(res.data["Time Series (5min)"][key]["4. close"])
+            high.push(res.data["Time Series (5min)"][key]["2. high"])
+            low.push(res.data["Time Series (5min)"][key]["3. low"])
+            volume.push(res.data["Time Series (5min)"][key]["5. volume"])
+        }
+        let datasets = {labels:labels.reverse(),open:open.reverse(),high:high.reverse(),low:low.reverse(),close:close.reverse(),volume
