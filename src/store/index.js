@@ -85,4 +85,21 @@ export default new Vuex.Store({
     setTechnical(state,datasets){
       state.technicallabels = datasets.labels
       state.ema.data = datasets.ema
-      state.ema.status
+      state.ema.status = datasets.ema[0] 
+      state.sma.data = datasets.sma
+      state.sma.status = datasets.sma[0] 
+    },
+    setError(state,bool){
+      state.error = bool
+    },
+    setLoaded(state,bool){
+      state.loaded = bool
+    }
+  },
+  actions: {
+    async setQuotes({commit},symbol){
+        let res = await axios.get(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${process.env.KEY}`)
+        let quotes = {
+            open:res.data["Global Quote"]["02. open"],
+            high:res.data["Global Quote"]["03. high"], 
+            low:res.data["Globa
