@@ -126,4 +126,16 @@ export default new Vuex.Store({
             low.push(res.data["Time Series (5min)"][key]["3. low"])
             volume.push(res.data["Time Series (5min)"][key]["5. volume"])
         }
-        let datasets = {labels:labels.reverse(),open:open.reverse(),high:high.reverse(),low:low.reverse(),close:close.reverse(),volume
+        let datasets = {labels:labels.reverse(),open:open.reverse(),high:high.reverse(),low:low.reverse(),close:close.reverse(),volume:volume.reverse()}
+        commit('setSeries',datasets)
+    },
+    async setTechnical({commit},symbol){
+      let ema = []
+      let sma = []
+      let labels = []
+      let res1 = await axios.get(`https://www.alphavantage.co/query?function=SMA&symbol=${symbol}&interval=weekly&time_period=10&series_type=open&apikey=${process.env.KEY}`)
+      let res2 = await axios.get(`https://www.alphavantage.co/query?function=EMA&symbol=${symbol}&interval=weekly&time_period=10&series_type=open&apikey=${process.env.KEY}`)
+      
+      for(let key in res1.data["Technical Analysis: SMA"]){
+          labels.push(key)
+          sma.push(re
