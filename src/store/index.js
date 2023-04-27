@@ -138,4 +138,19 @@ export default new Vuex.Store({
       
       for(let key in res1.data["Technical Analysis: SMA"]){
           labels.push(key)
-          sma.push(re
+          sma.push(res1.data["Technical Analysis: SMA"][key]["SMA"])
+      }
+      for(let key in res2.data["Technical Analysis: EMA"]){
+        ema.push(res2.data["Technical Analysis: EMA"][key]["EMA"])
+    }
+      let datasets = {labels:labels.reverse(),ema:ema.reverse(),sma:sma.reverse()}
+      commit('setTechnical', datasets)
+    },
+    setError({commit}, bool){
+      commit('setError',bool)
+    },
+    setLoaded({commit}, bool){
+      commit('setLoaded', bool)
+    }
+  }
+})
