@@ -25,4 +25,15 @@
         </v-col>
         <v-col>
             <v-card outlined class="blue-grey darken-1" dark>
-                    <v-card-tit
+                    <v-card-title><span class="overline">{{this.$store.state.symbol}}</span><v-spacer/><span class="overline">SMA</span></v-card-title>
+                <v-card-text class="headline">
+                    {{this.$store.state.sma.status}}
+                </v-card-text>
+            </v-card>
+        </v-col>
+        <v-col>
+            <v-card outlined class="blue-grey darken-1" dark>
+                    <v-card-title><span class="overline">{{this.$store.state.symbol}}</span><v-spacer/><span class="overline">EMA</span></v-card-title>
+                <v-card-text class="headline">
+                    {{this.$store.state.ema.status}}
+ 
