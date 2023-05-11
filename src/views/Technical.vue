@@ -36,4 +36,18 @@
                     <v-card-title><span class="overline">{{this.$store.state.symbol}}</span><v-spacer/><span class="overline">EMA</span></v-card-title>
                 <v-card-text class="headline">
                     {{this.$store.state.ema.status}}
- 
+                </v-card-text>
+            </v-card>
+        </v-col>
+    </v-row>
+        <v-row>
+            <v-col lg=8 md=8>
+                <apexchart type=area height=695 :options="chartOptions" :series="[{
+                name: `Simple Moving Average of ${this.$store.state.symbol}`,
+                data: this.$store.state.sma.data
+                    },{
+                name: `Exponential Moving Average of ${this.$store.state.symbol}`,
+                data: this.$store.state.ema.data
+                    }]" v-if="this.$store.state.loaded" ref='average'/>
+            </v-col>
+            <v-
