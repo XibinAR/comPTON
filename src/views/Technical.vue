@@ -86,4 +86,21 @@ export default {
         return{
             headers: [
             {
-   
+                text: 'Datetime',
+                align: 'left',
+                value: 'datetime',
+            },
+            {   text: 'Volume',
+                align:'left', 
+                value: 'volume' 
+            }
+            ],
+            series: [{
+            name: `Simple Moving Average of ${this.$store.state.symbol}`,
+            data: this.$store.state.sma.data
+            },{
+            name: `Exponential Moving Average of ${this.$store.state.symbol}`,
+            data: this.$store.state.ema.data
+            }],
+            chartOptions: {
+        
