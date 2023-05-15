@@ -60,4 +60,30 @@
               <v-data-table
                 :headers="headers"
                 :items="this.$store.getters.volumeTable"
-                :items-per-page="1
+                :items-per-page="10"
+                item-key="datetime"
+                :footer-props="{
+                firstIcon: 'mdi-arrow-collapse-left',
+                lastIcon: 'mdi-arrow-collapse-right',
+                prevIcon: 'mdi-minus',
+                nextIcon: 'mdi-plus'}"
+                dark
+                class='blue-grey darken-1 overline'
+                >
+            </v-data-table>
+            </v-col>
+        </v-row>
+  </div>
+</template>
+
+<script>
+import VueApexCharts from 'vue-apexcharts'
+export default {
+    components:{
+            apexchart: VueApexCharts,
+        },
+    data(){
+        return{
+            headers: [
+            {
+   
