@@ -103,4 +103,25 @@ export default {
             data: this.$store.state.ema.data
             }],
             chartOptions: {
-        
+            chart: {
+                zoom: {
+                enabled: false
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'straight'
+            },
+            series: [{
+                name: `SMA of ${this.$store.state.symbol}`,
+                data: this.$store.state.sma.data
+            },{
+
+                name: `EMA of ${this.$store.state.symbol}`,
+                data: this.$store.state.ema.data
+            }
+            ],
+            title: {
+                text: 'Moving Av
