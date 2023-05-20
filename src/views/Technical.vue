@@ -124,4 +124,33 @@ export default {
             }
             ],
             title: {
-                text: 'Moving Av
+                text: 'Moving Average of Apple Stock',
+                align: 'left'
+            },
+            subtitle: {
+                text: 'Average Movements',
+                align: 'left'
+            },
+            labels:this.$store.state.technicallabels,
+            xaxis:{
+                labels: {
+                show: false,
+                }
+            },
+            yaxis: {
+                opposite: true
+            },
+            legend: {
+                horizontalAlign: 'left'
+            }
+            }
+
+
+        }
+    }
+}
+</script>
+
+<style>
+
+</style>
